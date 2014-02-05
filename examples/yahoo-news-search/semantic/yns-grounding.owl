@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY grounding "http://daml.org/services/owl-s/1.2/Grounding.owl"> 
+  <!ENTITY restful   "http://fullsemanticweb.com/ontology/RESTfulGrounding/v1.0/RESTfulGrounding.owl"> 
+  <!ENTITY wadl      "http://fullsemanticweb.com/ontology/YNS/v1.0/YNS.wadl">
+  <!ENTITY ypc       "http://fullsemanticweb.com/ontology/YNS/v1.0/YNS-Process.owl">
+  <!ENTITY DEFAULT   "http://fullsemanticweb.com/ontology/YNS/v1.0/YNS-Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf      ="&rdf;#"
+  xmlns:rdfs     ="&rdfs;#"
+  xmlns:xsd      ="&xsd;#"
+  xmlns:owl      ="&owl;#"
+  xmlns:grounding="&grounding;#"
+  xmlns:restful  ="&restful;#"
+  xmlns:wadl     ="&wadl;#"
+  xmlns:ypc      ="&ypc;#"
+  xmlns          ="&DEFAULT;#"
+  xml:base       ="&DEFAULT;"
+>
+
+<!-- Ontology -->
+
+<owl:Ontology rdf:about="">
+  <rdfs:comment> 
+    This ontology represents the OWL-S service grounding description for Yahoos News Search Web Service.
+  </rdfs:comment>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&restful;"/>
+  <owl:imports rdf:resource="&ypc;"/>
+</owl:Ontology>
+
+<!-- WADL Grounding -->
+
+<restful:WadlGrounding rdf:ID="YNS-Grounding">
+  <grounding:hasAtomicProcessGrounding rdf:resource="#YNS-AtomicProcessGrounding"/>
+</restful:WadlGrounding>
+
+<!-- WADL Atomic Process Grounding -->
+
+<restful:WadlAtomicProcessGrounding rdf:ID="YNS-AtomicProcessGrounding">
+  <grounding:owlsProcess rdf:resource="&ypc;#YNS-AtomicProcess"/>
+  <restful:wadlResourceMethod>
+    <restful:WadlResourceMethodRef>
+      <restful:resource rdf:datatype="&xsd;#anyURI">&wadl;#YNS-Resource</restful:resource>
+      <restful:method rdf:datatype="&xsd;#anyURI">&wadl;#YNS-Method-GET</restful:method>
+    </restful:WadlResourceMethodRef>
+  </restful:wadlResourceMethod>
+  <restful:wadlVersion rdf:datatype="&xsd;#anyURI">
+    https://wadl.dev.java.net/wadl20090202.xsd
+  </restful:wadlVersion>
+  <restful:wadlDocument rdf:datatype="&xsd;#anyURI">
+    http://search.yahooapis.com/NewsSearchService/V1/YahooNewsSearch.wadl
+  </restful:wadlDocument>
+
+  <!-- Request Parameters -->
+
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-AppID"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#appid</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Query"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#query</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Type"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#type</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Query"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#query</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Results"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#results</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Start"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#start</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Sort"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#sort</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+  <restful:wadlRequestParam>
+    <restful:WadlRequestParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Language"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#language</restful:wadlMessageParam>
+    </restful:WadlRequestParamMap>
+  </restful:wadlRequestParam>
+
+  <!-- Response Parameters -->
+
+  <restful:wadlResponseParam>
+    <restful:WadResponseParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Out-Success"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#YNS-Rep-Success</restful:wadlMessageParam>
+    </restful:WadResponseParamMap>
+
+  </restful:wadlResponseParam>
+
+  <restful:wadlResponseParam>
+    <restful:WadResponseParamMap>
+      <grounding:owlsParameter rdf:resource="&ypc;#YNS-Out-Failure"/>
+      <restful:wadlMessageParam rdf:datatype="&xsd;#anyURI">&wadl;#YNS-Rep-Failure</restful:wadlMessageParam>
+    </restful:WadResponseParamMap>
+
+  </restful:wadlResponseParam>
+
+</restful:WadlAtomicProcessGrounding>
+</rdf:RDF>
