@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE uridef[
+  <!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs    "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl     "http://www.w3.org/2002/07/owl">
+  <!ENTITY profile "http://daml.org/services/owl-s/1.2/Profile.owl">
+  <!ENTITY actor   "http://daml.org/services/owl-s/1.2/ActorDefault.owl">
+  <!ENTITY ypc     "http://fullsemanticweb.com/ontology/YNS/v1.0/YNS-Process.owl">
+  <!ENTITY DEFAULT "http://fullsemanticweb.com/ontology/YNS/v1.0/YNS-Profile.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf    ="&rdf;#"
+  xmlns:rdfs   ="&rdfs;#"
+  xmlns:owl    ="&owl;#"
+  xmlns:profile="&profile;#"
+  xmlns:actor  ="&actor;#"
+  xmlns:ypc    ="&ypc;#"
+  xmlns        ="&DEFAULT;#"
+  xml:base     ="&DEFAULT;"
+>
+
+<!-- Ontology -->
+
+<owl:Ontology rdf:about="">
+  <rdfs:comment> 
+    This ontology represents the OWL-S service profile description for Yahoo News Search Web Service.
+  </rdfs:comment>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&ypc;"/>
+</owl:Ontology>
+
+<!-- Profile -->
+
+<profile:Profile rdf:ID="YNS-Profile">
+  <profile:has_process rdf:resource="&ypc;#YNS-Process"/>
+  <profile:serviceName>Yahoo News Search</profile:serviceName>
+  <profile:textDescription>
+    This service searches for news across a wide range of web portals.
+  </profile:textDescription>
+  <profile:contactInformation>      
+    <actor:Actor rdf:ID="YNS-Contact">
+      <actor:name>Yahoo Inc.</actor:name>
+      <actor:title>Copyright Agent</actor:title>
+      <actor:phone>(408) 349-5080</actor:phone>
+      <actor:fax>(408) 349-7821</actor:fax>
+      <actor:email>copyright@yahoo-inc.com</actor:email>
+      <actor:physicalAddress>Sunnyvale, CA, USA</actor:physicalAddress>
+      <actor:webURL>http://info.yahoo.com/copyright/us/</actor:webURL>
+    </actor:Actor>
+  </profile:contactInformation>
+  <profile:hasInput rdf:resource="&ypc;#YNS-AppID"/>
+  <profile:hasInput rdf:resource="&ypc;#YNS-Query"/>
+  <profile:hasInput rdf:resource="&ypc;#YNS-Type"/>
+  <profile:hasInput rdf:resource="&ypc;#YNS-Results"/>
+  <profile:hasInput rdf:resource="&ypc;#YNS-Start"/>
+  <profile:hasInput rdf:resource="&ypc;#YNS-Sort"/>
+  <profile:hasInput rdf:resource="&ypc;#YNS-Language"/>
+  <profile:hasOutput rdf:resource="&ypc;#YNS-Output"/>
+</profile:Profile>
+
+</rdf:RDF>
