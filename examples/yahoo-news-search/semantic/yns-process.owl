@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE uridef[
+  <!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs    "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl     "http://www.w3.org/2002/07/owl">
+  <!ENTITY xsd     "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY process "http://daml.org/services/owl-s/1.2/Process.owl">
+  <!ENTITY DEFAULT "http://fullsemanticweb.com/ontology/YNS/v1.0/YNS-Process.owl">
+  <!ENTITY THIS    "http://fullsemanticweb.com/ontology/YNS/v1.0/YNS-Process.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf    ="&rdf;#"
+  xmlns:rdfs   ="&rdfs;#"
+  xmlns:owl    ="&owl;#"
+  xmlns:xsd    ="&xsd;#"
+  xmlns:process="&process;#"
+  xmlns        ="&DEFAULT;#"
+  xml:base     ="&DEFAULT;"
+>
+
+<!-- Ontology -->
+
+<owl:Ontology rdf:about="">
+  <rdfs:comment> 
+    This ontology represents the OWL-S service process description for Yahoos News Search Web Service.
+  </rdfs:comment>
+  <owl:imports rdf:resource="&process;"/>
+</owl:Ontology>
+
+<!-- Basic Data Types -->
+
+<owl:Class rdf:ID="YNS-Type-Opt">
+  <owl:oneOf rdf:parseType="Collection">
+    <YNS-Type-Opt rdf:ID="all"/>
+    <YNS-Type-Opt rdf:ID="any"/>
+    <YNS-Type-Opt rdf:ID="phrase"/>
+  </owl:oneOf>
+</owl:Class>
+
+<owl:Class rdf:ID="YNS-Sort-Opt">
+  <owl:oneOf rdf:parseType="Collection">
+    <YNS-Sort-Opt rdf:ID="rank"/>
+    <YNS-Sort-Opt rdf:ID="date"/>
+  </owl:oneOf>
+</owl:Class>
+
+<owl:Class rdf:ID="YNS-Language-Opt">
+  <rdfs:comment> 
+    Yahoos News Search Web Service supports 37 languages, 
+    although only 5 of them have been listed here for the sake 
+    of brevity, namely English, Spanish, French, Italian, and Portuguese.
+  </rdfs:comment>
+  <owl:oneOf rdf:parseType="Collection">
+    <YNS-Language-Opt rdf:ID="en"/>
+    <YNS-Language-Opt rdf:ID="es"/>
+    <YNS-Language-Opt rdf:ID="fr"/>
+    <YNS-Language-Opt rdf:ID="it"/>
+    <YNS-Language-Opt rdf:ID="pt"/>
+  </owl:oneOf>
+</owl:Class> 
+
+<owl:Class rdf:ID="YNS-Output-Type">
+  <owl:unionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="#YNS-Notification-Success"/>
+    <owl:Class rdf:about="#YNS-Notification-Failure"/>
+  </owl:unionOf>
+</owl:Class>
+
+
+<!-- Atomic Process -->
+
+<process:AtomicProcess rdf:ID="YNS-AtomicProcess">
+
+  <!-- Input Parameters -->
+
+  <process:hasInput>
+    <process:Input rdf:ID="YNS-AppID">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&xsd;#ID</process:parameterType>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="YNS-Query">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&xsd;#string</process:parameterType>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="YNS-Type">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&THIS;#YNS-Type-Opt</process:parameterType>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="YNS-Results">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&xsd;#positiveInteger</process:parameterType>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="YNS-Start">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&xsd;#positiveInteger</process:parameterType>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="YNS-Sort">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&THIS;#YNS-Sort-Opt</process:parameterType>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="YNS-Language">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&THIS;#YNS-Language-Opt</process:parameterType>
+    </process:Input>
+  </process:hasInput>
+
+  <!-- Output Parameters -->
+
+  <process:hasOutput> 
+    <process:Output rdf:ID="YNS-Output">
+      <process:parameterType rdf:datatype="&xsd;#anyURI">&THIS;#YSN-Output-Type</process:parameterType>
+    </process:Output>
+  </process:hasOutput>
+
+</process:AtomicProcess>
+</rdf:RDF>
