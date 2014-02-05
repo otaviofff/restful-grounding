@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>RESTful Grounding by otaviofff</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>RESTful Grounding</h1>
+        <h2>Web Ontology to enable RESTful Semantic Web Services</h2>
+        <a href="https://github.com/otaviofff/restful-grounding" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h1>
+
+<p>RESTful Grounding was the very first <a href="http://en.wikipedia.org/wiki/Web_Ontology_Language">Web Ontology</a> to allow the semantic description of RESTful Web Services. It was authored by two Brazilian researches, from the <a href="http://www.usp.br">University of Sao Paulo</a> (USP), <a href="http://www.poli.usp.br/">Engineering School</a>, as part of their master thesis on <strong>RESTful Semantic Web Services</strong>: </p>
+
+<ul>
+<li>Otavio F. Ferreira Filho (<a href="https://github.com/otaviofff" class="user-mention">@otaviofff</a>)</li>
+<li>Maria Alice G. V. Ferreira</li>
+</ul><h1>
+<a name="abstract" class="anchor" href="#abstract"><span class="octicon octicon-link"></span></a>Abstract</h1>
+
+<p>The proposal is to allow the development of semantic Web services according to an architectural style called <a href="http://en.wikipedia.org/wiki/Restful_web_service">REST</a>. More specifically, it considers a REST implementation based on the <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a> protocol, resulting in <strong>RESTful Semantic Web Services</strong>. </p>
+
+<p>The development of semantic Web services has been the subject of various academic papers. However, the predominant effort considers Web services designed according to another architectural style named <a href="http://en.wikipedia.org/wiki/Remote_procedure_call">RPC</a>, mainly through the <a href="http://en.wikipedia.org/wiki/Simple_Object_Access_Protocol">SOAP</a> protocol. The RPC approach, strongly stimulated by the enterprise software industry, aggregates unnecessary processing and definitions that make Web services more complex than desired. Therefore, services end up being not as scalable or fast as possible. </p>
+
+<p>In fact, REST services form the majority of Web services currently developed on the social Web, an environment focused on user-generated content and networking, clearly stronger and more predominant than others.  </p>
+
+<p>The proposal presented here makes use of a specific selection of existing languages and protocols, reinforcing its feasibility. First, <a href="http://en.wikipedia.org/wiki/OWL-S">OWL-S</a> is used as the base ontology for services. Second, <a href="http://en.wikipedia.org/wiki/Web_Application_Description_Language">WADL</a> is used for syntactically describing them. Third, the <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a> protocol is used for transferring messages; defining the action to be executed; and also defining the execution scope. Finally, <a href="http://en.wikipedia.org/wiki/URI">URI</a> identifiers are responsible for specifying the service interface. </p>
+
+<p>The final compilation results in an ontology named RESTful Grounding, which extends OWL-S.</p>
+
+<h1>
+<a name="code" class="anchor" href="#code"><span class="octicon octicon-link"></span></a>Code</h1>
+
+<p>The formal RESTful Grounding ontology definition, in the OWL format, can be found here:</p>
+
+<ul>
+<li><a href="https://github.com/otaviofff/restful-grounding/blob/master/ontologies/restful-grounding/restful-grounding.owl">restful-grounding.owl</a></li>
+</ul><h1>
+<a name="paper" class="anchor" href="#paper"><span class="octicon octicon-link"></span></a>Paper</h1>
+
+<h2>
+<a name="english-version" class="anchor" href="#english-version"><span class="octicon octicon-link"></span></a>English Version</h2>
+
+<ul>
+<li><a href="https://github.com/otaviofff/restful-grounding/blob/master/papers/official-paper-icwi.pdf">Semantic Web Services: A RESTful Approach</a></li>
+<li>Proceedings of IADIS International Conference WWW/Internet (<a href="http://www.internet-conf.org/">ICWI</a>)</li>
+<li>2009, Rome, pp. 169-180</li>
+<li><a href="http://www.slideshare.net/otaviofff/semantic-web-services-a-restful-approach">Presentation</a></li>
+</ul><h2>
+<a name="portuguese-version" class="anchor" href="#portuguese-version"><span class="octicon octicon-link"></span></a>Portuguese Version</h2>
+
+<ul>
+<li><a href="https://github.com/otaviofff/restful-grounding/blob/master/papers/official-paper-ciawi.pdf">Serviços Semânticos: Uma Abordagem RESTful</a></li>
+<li>Proceedings of IADIS Iberian-American Conference WWW/Internet (<a href="http://www.ciawi-conf.org/">CIAWI</a>)</li>
+<li>2009, Madrid, pp. 35-46</li>
+<li><a href="http://www.slideshare.net/otaviofff/servios-semnticos-uma-abordagem-restful-2299305">Presentation</a></li>
+</ul><h1>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h1>
+
+<p>Yahoo’s News Search (<a href="http://developer.yahoo.com/search/news/V1/newsSearch.html">YNS</a>) is a RESTful service that allows you to search the Internet for news stories. It queries a wide range of web portals simultaneously, including BBC, CNN, and Yahoo itself. Unfortunately, this web service hasn’t been described formally yet, which prevents semantic software agents from discovering, selecting, and invoking it without human assistance.</p>
+
+<p>In order to overcome these limitations, both syntactic and semantic descriptions ought to be provided; a task accomplished by the files listed below.</p>
+
+<h2>
+<a name="syntactic-description" class="anchor" href="#syntactic-description"><span class="octicon octicon-link"></span></a>Syntactic Description</h2>
+
+<ul>
+<li>
+<a href="https://github.com/otaviofff/restful-grounding/blob/master/examples/yahoo-news-search/syntactic/yns.wadl">yns.wadl</a> (Originally created by <a href="https://www.java.net/pub/au/59">Marc Hadley</a>)</li>
+</ul><h2>
+<a name="semantic-description" class="anchor" href="#semantic-description"><span class="octicon octicon-link"></span></a>Semantic Description</h2>
+
+<ul>
+<li><a href="https://github.com/otaviofff/restful-grounding/blob/master/examples/yahoo-news-search/semantic/yns-service.owl">yns-service.owl</a></li>
+<li><a href="https://github.com/otaviofff/restful-grounding/blob/master/examples/yahoo-news-search/semantic/yns-profile.owl">yns-profile.owl</a></li>
+<li><a href="https://github.com/otaviofff/restful-grounding/blob/master/examples/yahoo-news-search/semantic/yns-process.owl">yns-process.owl</a></li>
+<li>
+<a href="https://github.com/otaviofff/restful-grounding/blob/master/examples/yahoo-news-search/semantic/yns-grounding.owl">yns-grounding.owl</a> (RESTful Grounding ontology applied)</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/otaviofff/restful-grounding/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/otaviofff/restful-grounding/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/otaviofff/restful-grounding"></a> is maintained by <a href="https://github.com/otaviofff">otaviofff</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
