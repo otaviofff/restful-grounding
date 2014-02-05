@@ -29,8 +29,37 @@
       <div class="inner clearfix">
       
         <section id="main-content">
-          <h1><a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>Rationale</h1>
-          <p>Insert text here...</p>
+          <h1><a name="rationale" class="anchor" href="#rationale"><span class="octicon octicon-link"></span></a>Rationale</h1>
+          <p>Web services are key elements in the fields of software engineering and code reuse. They also play a very important role on the Semantic Web by providing data to semantic software agents, as described by Tim Berners-Lee:</p>
+          <p><i>"The real power of the Semantic Web will be realized when people create many programs that collect Web content from diverse sources, process the information and exchange the results with other programs. The effectiveness of such software agents will increase exponentially as more machine-readable Web content and automated services become available. The Semantic Web promotes this synergy: even agents that were not expressly designed to work together can transfer data among themselves when the data come with semantics."</i></p>
+          <p>Despite the ever-growing number of available Web services, they are rarely described formally, which keeps them from joining the third phase of the Web. Service descriptions, if any, are typically informal, written in natural language and therefore available to human consumption only. Tim Berners-Lee highlights the need for semantically described Web services as follows:</p>
+          <p><i>"Many automated Web-based services already exist without semantics, but other programs such as agents have no way to locate one that will perform a specific function. This process, called service discovery, can happen only when there is a common language to describe a service in a way that lets other agents understand both the function offered and how to take advantage of it."</i></p>
+          <p>Considering the above vision, it is reasonable to conclude that any given service should be offered the opportunity to join the Semantic Web, regardless of the technologies and protocols it relies on. There are basically two groups of services, namely RPC and RESTful. They represent completely different approaches to implementing Web services, but Semantic Web researchers should be able to address both equally.</p>
+          <p>The problem is that only RPC services have been covered by authors writing about the Semantic Web. In fact, the term Web Service is frequently used as a synonymous with RPC. This current scenario might be the result of the clear SOAP protocol promotion carried out by the software industry, especially large tech enterprises.</p>
+          <p>Therefore, I would like to introduce a new concept: RESTful Semantic Web Services. The proposed set of protocols to formally describe a RESTful SWS includes HTTP, WADL, OWL-S, and URI. The following table compares this protocol stack with the one powering RPC SWS:</p>
+          <table>
+            <tr>
+              <td><b>Group</b></td>
+              <td><b>Access</b></td>
+              <td><b>Syntax</b></td>
+              <td><b>Semantics</b></td>
+            </tr>
+            <tr>
+              <td>RPC</td>
+              <td>SOAP</td>
+              <td>WSDL</td>
+              <td>OWL-S</td>
+            </tr>
+            <tr>
+              <td>RESTful</td>
+              <td>HTTP</td>
+              <td>WADL</td>
+              <td>OWL-S</td>
+            </tr>
+          </table>
+          <p>It is important to bear in mind that both semantic and syntactic descriptions have to be provided by any given service. Only then will the service be considered to be fully described. Semantics and syntax will respectively let software agents to automatically discover and invoke the service.</p>
+          <p>The OWL-S protocol had to be extended in order to allow for RESTful SWS, because its original specification covers RPC SWS only. Fortunately, OWL-S defines an abstract layer that enables software engineers to create multiple grounding strategies. A more detailed description of OWL-S goes beyond the scope of this blog post, but grounding can be seen as an approach to mapping a semantic description to a syntactic one.</p>
+          <p>The extension proposed is classified as Web ontology, and it’s been named RESTfulGrounding. The page describing this ontology contains the full paper that introduced RESTful SWS to the academic community in 2009. It also contains the ontology description in OWL and a proof-of-concept on a Web service provided by Yahoo.</p>
         </section>
 
         <aside id="sidebar">
