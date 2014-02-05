@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE uridef[
+<!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+<!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+<!ENTITY owl       "http://www.w3.org/2002/07/owl">
+<!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+<!ENTITY service   "http://www.daml.org/services/owl-s/1.2/Service.owl">
+<!ENTITY process   "http://www.daml.org/services/owl-s/1.2/Process.owl">
+<!ENTITY grounding "http://www.daml.org/services/owl-s/1.2/Grounding.owl">
+<!ENTITY DEFAULT   "http://www.fullsemanticweb.com/ontology/RESTfulGrounding/v1.0/RESTfulGrounding.owl">
+]>
+
+<rdf:RDF
+xmlns:rdf       = "&rdf;#"
+xmlns:rdfs      = "&rdfs;#"
+xmlns:owl       = "&owl;#"
+xmlns:service   = "&service;#"
+xmlns:process   = "&process;#"
+xmlns:grounding = "&grounding;#"
+xmlns           = "&DEFAULT;#"
+xml:base        = "&DEFAULT;">
+
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    $Id: RESTfulGrounding.owl, v1 2009/06/04 15:30:00 Otavio Exp $
+  </owl:versionInfo>
+  <rdfs:comment>
+    RESTfulGrounding is an OWL ontology that aims at grounding RESTful Semantic Web Services to WADL documents.
+    This version is intended for use with WADL v20090202 [https://wadl.dev.java.net/wadl20090202.pdf] and OWL-S v1.2 [http://www.daml.org/services/owl-s/1.2/].
+  </rdfs:comment>
+  <owl:imports>
+    <owl:Ontology rdf:about="http://www.daml.org/services/owl-s/1.2/Process.owl"/>
+  </owl:imports>
+</owl:Ontology>
+
+
+
+<!-- WadlGrounding -->
+
+
+<owl:Class rdf:ID="WadlGrounding">
+  <rdfs:subClassOf rdf:resource="&grounding;#Grounding"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="&grounding;#hasAtomicProcessGrounding"/>
+      <owl:allValuesFrom rdf:resource="#WadlAtomicProcessGrounding"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+
+<!-- WadlAtomicProcessGrounding -->
+
+
+<owl:Class rdf:ID="WadlAtomicProcessGrounding">
+  <rdfs:subClassOf rdf:resource="&grounding;#AtomicProcessGrounding"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#wadlResourceMethod"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="wadlResourceMethod">
+  <rdfs:domain rdf:resource="#WadlAtomicProcessGrounding"/>
+  <rdfs:range rdf:resource="#WadlResourceMethodRef"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="wadlRequestParam">
+  <rdfs:domain rdf:resource="#WadlAtomicProcessGrounding"/>
+  <rdfs:range rdf:resource="#WadlRequestParamMap"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="wadlResponseParam">
+  <rdfs:domain rdf:resource="#WadlAtomicProcessGrounding"/>
+  <rdfs:range rdf:resource="#WadlResponseParamMap"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:ID="wadlVersion">
+  <rdf:type rdf:resource="&owl;#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#WadlAtomicProcessGrounding"/>
+  <rdfs:range rdf:resource="&xsd;#anyURI"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="wadlDocument">
+  <rdfs:domain rdf:resource="#WadlAtomicProcessGrounding"/>
+  <rdfs:range rdf:resource="&xsd;#anyURI"/>
+</owl:DatatypeProperty>
+
+
+
+<!-- WadlResourceMethodRef -->
+
+
+<owl:Class rdf:ID="WadlResourceMethodRef">
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="resource">
+  <rdfs:domain rdf:resource="#WadlResourceMethodRef"/>
+  <rdfs:range rdf:resource="&xsd;#anyURI"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="method">
+  <rdfs:domain rdf:resource="#WadlResourceMethodRef"/>
+  <rdfs:range rdf:resource="&xsd;#anyURI"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#WadlResourceMethodRef">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#resource"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#WadlResourceMethodRef">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#method"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+
+<!-- WadlMessageParamMap -->
+
+
+<owl:Class rdf:ID="WadlMessageParamMap">
+  <rdfs:subClassOf rdf:resource="&grounding;#MessageMap"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#wadlMessageParam"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="&grounding;#owlsParameter"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="WadlRequestParamMap">
+  <rdfs:subClassOf rdf:resource="#WadlMessageParamMap"/>
+  <rdfs:subClassOf rdf:resource="&grounding;#InputMessageMap"/>
+</owl:Class>
+
+<owl:Class rdf:ID="WadlResponseParamMap">
+  <rdfs:subClassOf rdf:resource="#WadlMessageParamMap"/>
+  <rdfs:subClassOf rdf:resource="&grounding;#OutputMessageMap"/>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="wadlMessageParam">
+  <rdfs:domain rdf:resource="#WadlMessageParamMap"/>
+  <rdfs:range rdf:resource="&xsd;#anyURI"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
