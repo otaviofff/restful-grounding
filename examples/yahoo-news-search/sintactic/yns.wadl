@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<application 
+  xsi:schemaLocation="http://wadl.dev.java.net/2009/02 wadl.xsd"
+  xmlns             ="http://wadl.dev.java.net/2009/02"
+  xmlns:xsi         ="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd         ="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns         ="urn:yahoo:yn"
+  xmlns:yn          ="urn:yahoo:yn"
+  xmlns:ya          ="urn:yahoo:api">
+
+<grammars>
+  <include href="NewsSearchResponse.xsd"/>
+  <include href="Error.xsd"/>
+</grammars>
+
+<!-- Representations -->
+
+<representation mediaType="application/xml" element="yn:ResultSet" id="YNS-Rep-Success"/>
+<representation mediaType="application/xml" element="ya:Error" id="YNS-Rep-Failure"/>
+
+<!-- Methods -->
+
+<method name="GET" id="YNS-Method-GET">
+  <request>
+    <param name="appid" style="query" type="xsd:string" required="true"/>
+    <param name="query" style="query" type="xsd:string" required="true"/>
+    <param name="type" style="query" default="all">
+      <option value="all"/>
+      <option value="any"/>
+      <option value="phrase"/>
+    </param>
+    <param name="results" style="query" type="xsd:int" default="10"/>
+    <param name="start" style="query" type="xsd:int" default="1"/>
+    <param name="sort" style="query" default="rank">
+      <option value="rank"/>
+      <option value="date"/>
+    </param>
+    <param name="language" style="query" type="xsd:string"/>
+  </request>
+  <response status="200">
+    <representation href="#YNS-Rep-Success"/>
+  </response>
+  <response status="400">
+    <representation href="#YNS-Rep-Failure"/>
+  </response>
+</method>
+
+<!-- Resources -->
+
+<resources base="http://search.yahooapis.com/NewsSearchService/V1/">
+  <resource path="newsSearch" id="YNS-Resource">
+    <method href="#YNS-Method-GET"/>
+  </resource>
+</resources>
+
+</application>
