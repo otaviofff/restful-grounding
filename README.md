@@ -13,9 +13,9 @@ Abstract
 
 The proposal is to allow the development of semantic Web services according to an architectural style called REST. More specifically, it considers a REST implementation based on the HTTP protocol, resulting in RESTful Semantic Web Services. 
 
-The development of semantic Web services has been the subject of various academic papers. However, the predominant effort considers Web services designed according to another architectural style named RPC, mainly through the SOAP protocol. The RPC approach, strongly stimulated by the software industry, aggregates unnecessary processing and definitions that make Web services more complex than desired. Therefore, services end up being not as scalable and fast as possible. 
+The development of semantic Web services has been the subject of various academic papers. However, the predominant effort considers Web services designed according to another architectural style named RPC, mainly through the SOAP protocol. The RPC approach, strongly stimulated by the enterprise software industry, aggregates unnecessary processing and definitions that make Web services more complex than desired. Therefore, services end up being not as scalable or fast as possible. 
 
-In fact, REST services form the majority of Web services developed within the current Social Web context, an environment clearly focused on user-generated content and networking. 
+In fact, REST services form the majority of Web services currently developed on the social Web, an environment focused on user-generated content and networking, clearly stronger and more predominant than others.  
 
 The proposal presented here makes use of a specific selection of existing languages and protocols, reinforcing its feasibility. Firstly, OWL-S is used as the base ontology for services, whereas WADL is for syntactically describing them. Secondly, the HTTP protocol is used for transferring messages; defining the action to be executed; and also defining the execution scope. Finally, URI identifiers are responsible for specifying the service interface. 
 
