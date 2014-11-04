@@ -3,7 +3,7 @@ RESTful Grounding
 
 RESTful Grounding was the very first Web Ontology to allow the semantic description of RESTful Web Services. It was originally published in the Proceedings of IADIS International Conference WWW/Internet (ICWI), back in November 2009, in Rome. 
 
-This ontology was authored by two Brazilian researches, from the University of Sao Paulo (USP) - Engineering School, as part of their master thesis on RESTful Semantic Web Services: 
+This ontology was authored by two Brazilian researchers, from the University of Sao Paulo (USP) - Engineering School, as part of their master thesis on RESTful Semantic Web Services: 
 
 * Otavio Freitas Ferreira Filho
 * Maria Alice Grigas Verella Ferreira
