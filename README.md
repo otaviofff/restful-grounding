@@ -1,5 +1,5 @@
-RESTful Grounding
-=================
+RESTful Grounding Ontology
+==========================
 
 RESTful Grounding was the very first Web Ontology to allow the semantic description of RESTful Web Services. It was originally published in the Proceedings of IADIS International Conference WWW/Internet (ICWI), back in November 2009, in Rome. 
 
